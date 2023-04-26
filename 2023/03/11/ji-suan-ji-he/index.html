@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>我的技术与生活——小站首页 | Ybaggio</title>
+  <title>我的技术与生活——计算几何 | Ybaggio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="/imgs/shortcut-icon.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/public.css" />
@@ -16,7 +16,7 @@
 
   <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <script>
-    document.title = `我的技术与生活——小站首页`
+    document.title = `我的技术与生活——计算几何`
   </script>
 <meta name="generator" content="Hexo 5.4.2"></head>
 
@@ -346,133 +346,163 @@
 </div></div>
       <div id="main-container" class="main-container">
 
-    
 
-<div class="index">
-  <div class="index-left">
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/04/25/hello-world/">Hello World </a>
-          <div>
-            
+  <style>
+pre::-webkit-scrollbar {
+  width: 5px;
+  height: 10px;
+  background-color:#F5F5F5;
+}
+/*定义滚动条轨道
+内阴影+圆角*/
+pre::-webkit-scrollbar-track {
+  background-color:#F5F5F5;
+}
+/*定义滑块
+内阴影+圆角*/
+pre::-webkit-scrollbar-thumb {
+  background-color: rgb(69, 83, 100);
+}
+
+pre:active {
+  background-color: rgb(81, 95, 116);
+}
+</style>
+
+<div class="article-container">
+  <div class="article">
+    <h1 class="article-title">计算几何</h1>
+    <div class="article-info">
+      <div class="article-info--item">
+        <div class="article-info--info">
+          
+          <div class="article-info--categories">
+            <span>分类：</span>
             
           </div>
-          <div class="bg"></div>
-        </div>
-      </div>
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/04/06/arc127b-ti-jie/">ARC127B 题解 </a>
-          <div>
-            
+          
+          
+          <div class="article-info--tags">
+            <span>标签：</span>
             
           </div>
-          <div class="bg"></div>
+          
+          <p class="article-info--date">日期：2023-03-11 14:38:11</p>
         </div>
+        <img src="/imgs/default-cover.webp" alt="" class="article-cover">
       </div>
+    </div>
+    <article class="article-content">
+      <p><strong>本文章均讨论二维计算几何。</strong></p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h3 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h3><p>对点进行定位的规则，如：</p>
+<ul>
+<li>直角坐标系：用原点在 $2$ 个维度上的偏移量表示坐标。</li>
+<li>极坐标系：如下图，旋转角和到原点的距离表示坐标。</li>
+</ul>
+<h2 id="向量"><a href="#向量" class="headerlink" title="向量"></a>向量</h2><p>拥有大小和方向的量</p>
+<p>可以用 $A$ 点到 $B$ 点的有向线段 $\overrightarrow{AB}$ 表示向量。</p>
+<p>向量没有位置属性，可以理解为平面直角坐标系从原点到坐标系内任意一点的有向线段，所以向量可以用点 $(X,Y)$ 表示原点到 $(X,Y)$ 的一条向量。</p>
+<h3 id="向量的运算"><a href="#向量的运算" class="headerlink" title="向量的运算"></a>向量的运算</h3><p><strong>加法</strong></p>
+<p>几何上：将两个向量首尾相接。</p>
+<p>代数上：$\overrightarrow{(X_1,Y_1)}+\overrightarrow{(X_2,Y_2)}=\overrightarrow{(X_1+X_2,Y_1+Y_2)}$。</p>
+<p>注意：向量加法满足交换律。</p>
+<p><strong>反向量</strong><br>与一向量大小相同，位置相反的向量<br>一般的，向量 $\overrightarrow{(X,Y)}$ 的反向量是 $\overrightarrow{(-X,-Y)}$</p>
+<p><strong>减法</strong><br>减一个向量即加上这个向量的反向量。<br>$\overrightarrow{(X_1,Y_1)}+\overrightarrow{(X_2,Y_2)}=\overrightarrow{(X_1-X_2,Y_1-Y_2)}$</p>
+<p><strong>点乘</strong><br>$\overrightarrow{(X_1,Y_1)} \cdot \overrightarrow{(X_2,Y_2)}=X_1 \times X_2+Y_1 \times Y_2$</p>
+<p>向量可以判断前后关系：若有向量 $\overrightarrow{OP}$ 和 $\overrightarrow{OQ}$，根据参照向量 $\overrightarrow{OP}$ 建立直角坐标系，$O$ 为原点，$\overrightarrow{OP}$ 方向为 $x$ 正半轴。</p>
+<ul>
+<li>当 $Q$ 在一、四象限或 $x$ 正半轴上时，有 $\overrightarrow{OP} \cdot \overrightarrow{OQ}&gt;0$。（绿色）</li>
+<li>当 $Q$ 在二、三象限或 $x$ 负半轴上时，有 $\overrightarrow{OP} \cdot \overrightarrow{OQ}&lt;0$。（橙色）<br><img src="https://ybaggio.netlify.app/post-images/1678519632215.png" alt=""></li>
+</ul>
+<p><strong>叉乘</strong><br>$\overrightarrow{(X_1,Y_1)} \times \overrightarrow{(X_2,Y_2)}=X_1 \times Y_2-Y_1 \times X_2$<br>叉乘可以判断向量的左右关系根据参照向量 $\overrightarrow{OP}$ 建立直角坐标系，$O$ 为原点，$\overrightarrow{OP}$ 方向为 $x$ 正半轴。</p>
+<ul>
+<li>当 $Q$ 在 $x$ 轴上时，有 $\overrightarrow{OP} \times \overrightarrow{OQ}=0$。（蓝色）</li>
+<li>当Q在一、二象限或 $y$ 正半轴上时，有 $\overrightarrow{OP} \times \overrightarrow{OQ}&gt;0$。（绿色）</li>
+<li>当Q在三、四象限或 $y$ 负半轴上时，有 $\overrightarrow{OP} \times \overrightarrow{OQ}&lt;0$。（橙色）<br><img src="https://ybaggio.netlify.app/post-images/1678520507285.png" alt=""></li>
+</ul>
+
+    </article>
+    
+    <div class="read-nums">
+      <!-- id 将作为查询条件 -->
+      <span id="2023/03/11/ji-suan-ji-he/" class="leancloud_visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">浏览量</em>
+        <i class="leancloud-visitors-count"></i>
+      </span>
+    </div>
+    <div class="comments-intro">
+      <h2>评论区</h2>
+      <p>欢迎你留下宝贵的意见，昵称输入QQ号会显示QQ头像哦~</p>
+    </div>
+    <div id="vcomments" class="vcomments"></div>
     
   </div>
-  <div class="index-center">
-    
-      <div class="index-article">
-        <!-- <img class="index-article--cover" data-cover="" src="/imgs/default-cover.webp" alt=""> -->
-        <div class="index-article--box">
-          <img class="index-article--cover" data-cover="imgs/default-cover.webp" alt="">
-        </div>
-        <div class="index-article--content">
-          <a href="/2023/04/06/cph-jiao-cheng/">CPH 教程 </a>
-          <div>
-            
-            
-          </div>
-          <div class="bg"></div>
-        </div>
+  <div class="article-catelogue">
+    <div class="article-catelogue--wrapper">
+      <div class="catelogue catelogue-1">
+        <h3>目录</h3>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E7%B3%BB"><span class="toc-number">1.0.1.</span> <span class="toc-text">坐标系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%91%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">向量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-number">1.1.1.</span> <span class="toc-text">向量的运算</span></a></li></ol></li></ol></li></ol>
       </div>
-    
-  </div>
-  <div class="index-right">
-    <div class="index-right-wrapper">
       
-      <ul class="tags" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">2023年04月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/03/">2023年03月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">2023年02月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/01/">2023年01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">2022年12月</a><span class="archive-list-count">12</span></li></ul>
+        <div class="catelogue catelogue-2">
+          
+            <p>
+              <span>上一篇：</span>
+              <a href="/2023/03/21/abc294d-ti-jie/">ABC294D题解</a>
+            </p>
+           
+          
+            <p>
+              <span>下一篇</span>
+              <a href="/2023/02/27/abc291e-find-permutation-ti-jie/">[ABC291E] Find Permutation 题解</a>
+            </p>
+          
+        </div>
+      
     </div>
   </div>
 </div>
 
-  <div class="page">
-    <span class="page-number current">1</span>
-  </div>
+<script src="http://cdn.yangxiang.cc/prism.js"></script>
+
+<script>
+  // var定义，避免pjax重新进来造成的重复声明错误
+  var config = JSON.parse('{"enable":true,"appId":"YKaIrPAVFRvxzl5TCVBe8Gar-gzGzoHsz","appKey":"Cn7X9KVchDYHgL3AUkAwS9y9","placeholder":"请留下你宝贵的意见吧~","meta":["nick"],"recordIP":true,"visitor":true,"enableQQ":true}')
+  new Valine({
+    el: '#vcomments',
+    appId: config.appId,
+    appKey: config.appKey,
+    placeholder: config.placeholder,
+    meta: config.meta,
+    recordIP: config.recordIP,
+    visitor: config.visitor,
+    enableQQ: config.enableQQ,
+    path: '2023/03/11/ji-suan-ji-he/'
+  })
+</script>
 
 
 <script>
-  var allImgBoxs = document.querySelectorAll('.index-article--box');
-  var windowHeight = window.innerHeight;
-  var boxs = Array.from(allImgBoxs);
-  var timer = null;
-  boxs.forEach((box, idx) => {
-    if (!window.loadImageSet || !window.loadImageSet.includes(idx)) {
-      box.classList.add('img-loading');
-    } else {
-      const imgDom = box.querySelector('img');
-      imgDom.src = imgDom.dataset.cover;
-    }
-  });
-
-  function scrollFn() {
-    if (timer) {
-      return;
-    }
-    timer = setTimeout(() => {
-      loadImage();
-      timer = null;
-    }, 100)
-  }
-
-  if (!window.loadedImage) {
-    document.addEventListener('scroll', scrollFn);
-  }
-
-  function loadImage() {
-    const doc = document.documentElement;
-    const scrollTop = doc.scrollTop;
-    if (boxs.every(box => box.loadedImage)) {
-      document.removeEventListener('scroll', scrollFn);
-      window.loadedImage = 1;
-      return;
-    }
-    boxs.forEach((box, idx) => {
-      if (box.loadedImage) {
-        return;
-      }
-      if (box.getBoundingClientRect().top < windowHeight) {
-        const imgDom = box.querySelector('img');
-        imgDom.src = imgDom.dataset.cover;
-        imgDom.onload = () => {
-          box.classList.remove('img-loading')
-          box.loadedImage = true;
-          if (window.loadImageSet) {
-            window.loadImageSet.push(idx);
-          } else {
-            window.loadImageSet = [];
-            window.loadImageSet.push(idx);
-          }
-        }
-      }
-    });
-  }
-
-  window.loadImageFn = loadImage;
+  $(document).on('pjax:complete', function() {
+    const tocs = document.querySelector('.toc')
+    const links = tocs ? tocs.querySelectorAll('a') : []
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        const href = decodeURIComponent(e.href)
+        href.search(/#(.*)/)
+        const id = RegExp.$1
+        const target = document.querySelector('#' + id)
+        const top = target.offsetTop
+        document.documentElement.scrollTo({
+          top: top - 100,
+          behavior: 'smooth'
+        })
+        e.preventDefault()
+      })
+    })
+  })
 </script> 
+
 </div>
       <div class="main-right-wrapper"><div class="main-right">
   <div class="main-right--board">
