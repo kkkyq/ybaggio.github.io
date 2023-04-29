@@ -193,7 +193,7 @@
   const ipt = document.querySelector('#search-input')
   const btn = document.querySelector('#search-btn')
   const layer = document.querySelector('#search-layer')
-  const posts = JSON.parse(`[{"title":"[ABC291D] Flip Cards 题解","path":"2023/02/27/abc291d-flip-cards-ti-jie/"},{"title":"ABC294D题解","path":"2023/03/21/abc294d-ti-jie/"},{"title":"[ABC291E] Find Permutation 题解","path":"2023/02/27/abc291e-find-permutation-ti-jie/"},{"title":"[ARC107C] Shuffle Permutation 题解","path":"2022/12/28/arc107c-shuffle-permutation-ti-jie/"},{"title":"ARC127B 题解","path":"2023/04/06/arc127b-ti-jie/"},{"title":"[ARC140B] Shorten ARC贪心做法","path":"2022/12/28/arc140b-shorten-arc-tan-xin-zuo-fa/"},{"title":"CF1100E Andrew and Taxi 题解","path":"2022/12/28/cf1100e-andrew-and-taxi-ti-jie/"},{"title":"CF1685B题解","path":"2022/12/28/cf1685b-ti-jie/"},{"title":"CF1686A题解","path":"2022/12/28/cf1686a-ti-jie/"},{"title":"CF1718B题解(很快的做法)!!!","path":"2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/"},{"title":"CPH 教程","path":"2023/04/06/cph-jiao-cheng/"},{"title":"计算几何","path":"2023/03/11/ji-suan-ji-he/"},{"title":"莫队学习笔记","path":"2023/03/25/mo-dui-xue-xi-bi-ji/"},{"title":"Hello World","path":"2023/04/25/hello-world/"},{"title":"P3670 [USACO17OPEN]Bovine Genomics S题解","path":"2022/12/28/p3670-usaco17openbovine-genomics-s-ti-jie/"},{"title":"P6149题解_简单的思路","path":"2022/12/28/p6149-ti-jie-_-jian-dan-de-si-lu/"},{"title":"P7410题解 提供一种代码两超少，思路新奇的做法","path":"2022/12/28/p7410-ti-jie-ti-gong-yi-chong-dai-ma-liang-chao-shao-si-lu-xin-qi-de-zuo-fa/"},{"title":"P8269 [USACO22OPEN] Visits S 题解","path":"2022/12/28/p8269-usaco22open-visits-s-ti-jie/"},{"title":"P8270 [USACO22OPEN] Subset Equality S题解","path":"2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/"},{"title":"浅谈卡常","path":"2023/03/27/qian-tan-qia-chang/"},{"title":"树链剖分学习笔记","path":"2023/01/14/shu-lian-pou-fen-xue-xi-bi-ji/"},{"title":"tarjan学习笔记","path":"2022/12/30/tarjan-xue-xi-bi-ji/"},{"title":"网络流","path":"2023/01/31/wang-luo-liu/"}]`)
+  const posts = JSON.parse(`[{"title":"[ABC291D] Flip Cards 题解","path":"2023/02/27/abc291d-flip-cards-ti-jie/"},{"title":"[ABC291E] Find Permutation 题解","path":"2023/02/27/abc291e-find-permutation-ti-jie/"},{"title":"ABC294D题解","path":"2023/03/21/abc294d-ti-jie/"},{"title":"[ARC107C] Shuffle Permutation 题解","path":"2022/12/28/arc107c-shuffle-permutation-ti-jie/"},{"title":"ARC127B 题解","path":"2023/04/06/arc127b-ti-jie/"},{"title":"[ARC140B] Shorten ARC贪心做法","path":"2022/12/28/arc140b-shorten-arc-tan-xin-zuo-fa/"},{"title":"CF1100E Andrew and Taxi 题解","path":"2022/12/28/cf1100e-andrew-and-taxi-ti-jie/"},{"title":"CF1685B题解","path":"2022/12/28/cf1685b-ti-jie/"},{"title":"CF1686A题解","path":"2022/12/28/cf1686a-ti-jie/"},{"title":"CF1718B题解(很快的做法)!!!","path":"2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/"},{"title":"CPH 教程","path":"2023/04/06/cph-jiao-cheng/"},{"title":"Hello World","path":"2023/04/25/hello-world/"},{"title":"计算几何","path":"2023/03/11/ji-suan-ji-he/"},{"title":"莫队学习笔记","path":"2023/03/25/mo-dui-xue-xi-bi-ji/"},{"title":"P3670 [USACO17OPEN]Bovine Genomics S题解","path":"2022/12/28/p3670-usaco17openbovine-genomics-s-ti-jie/"},{"title":"P6149题解_简单的思路","path":"2022/12/28/p6149-ti-jie-_-jian-dan-de-si-lu/"},{"title":"P7410题解 提供一种代码两超少，思路新奇的做法","path":"2022/12/28/p7410-ti-jie-ti-gong-yi-chong-dai-ma-liang-chao-shao-si-lu-xin-qi-de-zuo-fa/"},{"title":"P8269 [USACO22OPEN] Visits S 题解","path":"2022/12/28/p8269-usaco22open-visits-s-ti-jie/"},{"title":"P8270 [USACO22OPEN] Subset Equality S题解","path":"2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/"},{"title":"浅谈卡常","path":"2023/03/27/qian-tan-qia-chang/"},{"title":"树链剖分学习笔记","path":"2023/01/14/shu-lian-pou-fen-xue-xi-bi-ji/"},{"title":"tarjan学习笔记","path":"2022/12/30/tarjan-xue-xi-bi-ji/"},{"title":"网络流","path":"2023/01/31/wang-luo-liu/"}]`)
   ipt.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
       handleSearch()
@@ -393,8 +393,16 @@ pre:active {
       </div>
     </div>
     <article class="article-content">
-      <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>CPH 是Vscode的一款插件，支持从VS Code中快速编译、运行和判断竞争性编程问题。<br><img src="https://cdn.luogu.com.cn/upload/image_hosting/otn4brmv.png" alt=""><br>此外，你可以通过安装浏览器插件Competitive Companion，从而快速将题目的样例数据导入到CPH中。</p>
-<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>对于拓展CPH，直接在Vscode中搜索“CPH“即可。对于浏览器插件Competitive Companion。需要翻墙从谷歌拓展商店中下载。<br><a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl">链接</a><br>下载后打开Vscode（要打开工作区）再打开题目界面（Codeforces、atcoder、洛谷等OJ均可），然后按照图片所示操作。<br><img src="https://cdn.luogu.com.cn/upload/image_hosting/si915vkp.png" alt=""><br>现在回到vscode，我们发现新建了一个文件，文件名为题目标题，cph界面也有了题目的样例数据。写好代码后点击Run all 即可运行了。</p>
+      <h1 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h1>
+<p>CPH 是Vscode的一款插件，支持从VS Code中快速编译、运行和判断竞争性编程问题。<br />
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/otn4brmv.png" alt="" /><br />
+此外，你可以通过安装浏览器插件Competitive Companion，从而快速将题目的样例数据导入到CPH中。</p>
+<h1 id="下载"><a class="markdownIt-Anchor" href="#下载"></a> 下载</h1>
+<p>对于拓展CPH，直接在Vscode中搜索“CPH“即可。对于浏览器插件Competitive Companion。需要翻墙从谷歌拓展商店中下载。<br />
+<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl">链接</a><br />
+下载后打开Vscode（要打开工作区）再打开题目界面（Codeforces、atcoder、洛谷等OJ均可），然后按照图片所示操作。<br />
+<img src="https://cdn.luogu.com.cn/upload/image_hosting/si915vkp.png" alt="" /><br />
+现在回到vscode，我们发现新建了一个文件，文件名为题目标题，cph界面也有了题目的样例数据。写好代码后点击Run all 即可运行了。</p>
 
     </article>
     
@@ -416,7 +424,7 @@ pre:active {
     <div class="article-catelogue--wrapper">
       <div class="catelogue catelogue-1">
         <h3>目录</h3>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">下载</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text"> 介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text"> 下载</span></a></li></ol>
       </div>
       
         <div class="catelogue catelogue-2">
