@@ -127,39 +127,6 @@
   }
 </style>
 <body>
-  <script>
-    (function () {
-
-      //鍒涘缓root鑺傜偣
-      var div = document.createElement('div');
-      div.className = "robot-root";
-
-      div.innerHTML = '<transition name="fade"><chat v-drag v-if="showChat" @close="close"></chat></transition><div class="chat-btn" @click="showChat=!showChat"><span :class="!showChat?\'iconfont icon-msg\':\'iconfont icon-x\'"></span></div>'
-      document.body.appendChild(div);
-      //<link href="css/css.css" type="text/css" rel="stylesheet" />
-      //寮曞叆css
-      var link = document.createElement('link');
-      link.type = 'text/css';
-      link.rel = 'stylesheet';
-      link.href = 'https://www.ownthink.com/bot/css/chat.css';
-      document.head.appendChild(link);
-
-      link = document.createElement('link');
-      link.type = 'text/css';
-      link.rel = 'stylesheet';
-      link.href = 'https://at.alicdn.com/t/font_1430622_8wmvmxd3l3y.css';
-      document.head.appendChild(link);
-
-      //寮曞叆js
-      var libs = ['vue', 'chat'];
-      libs.forEach(item => {
-        var script = document.createElement('script');
-        script.type = 'text/javascript';
-        script.src = 'https://www.ownthink.com/bot/js/' + item + '.js';
-        document.body.appendChild(script);
-      });
-    })();
-  </script>
   <div id="load" class="load">
     <div class="load-circle">
       <div class="load-circle-inner"></div>
@@ -810,7 +777,7 @@
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="https://www.ownthink.com/bot/js/robot.js?appid=fb7b05c05ad5db9abf683f9e86e5f09c"></script>
 </body>
 <!--  -->
 </html>
