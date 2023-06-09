@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+
+  
+  <title>CF1718B题解(很快的做法)!!! | Ybaggio的小站</title>
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="Ybaggio的小站" type="application/atom+xml">
+  <meta name="description" content="题意 现在我们有 kkk 种字符，第 iii 种字符有 aia_iai​ 个，现在我们要将这 ∑i&#x3D;1nai\sum^n_{i&#x3D;1}a_i∑i&#x3D;1n​ai​ 个字符按照某种顺序排列，使其符合以下形式，就称它是合法的： 1个相同的-1个相同的-2个相同的-3个相同的-5个相同的-8个相同的 …\dots… 很显然这是个菲波那切数列(1−1−2−3−5−8−…1-1-2-3-5-8- \dots1−1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF1718B题解(很快的做法)!!!">
+<meta property="og:url" content="http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/index.html">
+<meta property="og:site_name" content="Ybaggio的小站">
+<meta property="og:description" content="题意 现在我们有 kkk 种字符，第 iii 种字符有 aia_iai​ 个，现在我们要将这 ∑i&#x3D;1nai\sum^n_{i&#x3D;1}a_i∑i&#x3D;1n​ai​ 个字符按照某种顺序排列，使其符合以下形式，就称它是合法的： 1个相同的-1个相同的-2个相同的-3个相同的-5个相同的-8个相同的 …\dots… 很显然这是个菲波那切数列(1−1−2−3−5−8−…1-1-2-3-5-8- \dots1−1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-28T12:05:17.000Z">
+<meta property="article:modified_time" content="2023-06-09T04:37:50.406Z">
+<meta property="article:author" content="Ybaggio">
+<meta property="article:tag" content="题解">
+<meta name="twitter:card" content="summary">
+
+  <meta name="keywords" content=",题解">
+  <meta name="format-detection" content="telephone=no,email=no">
+  <meta name="theme-color" content="#9C27B0">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Ybaggio的小站">
+  <meta name="msapplication-starturl" content="http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/">
+  <meta name="msapplication-navbutton-color" content="#9C27B0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Ybaggio的小站">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
+
+  
+    <link rel="canonical" href="http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/">
+  
+
+  
+  
+
+  
+  
+  
+
+  
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/custom.css">
+
+<meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+
+<body class="mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink">
+  <script>var a=localStorage.getItem("mdui-theme-layout-dark");if(a){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.getElementsByTagName("body")[0].className+=" mdui-theme-layout-dark"};</script>
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(!a){document.getElementsByTagName("body")[0].className+=" mdui-drawer-body-left"};</script>
+  <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
+  <div class="mdui-toolbar mdui-color-theme">
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
+    <a href="/" class="mdui-typo-headline">Ybaggio的小站</a>
+    <div class="mdui-toolbar-spacer"></div>
+    <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+  </div>
+</header>
+<div class="mdui-dialog" id="search">
+  
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="http://ybaggio.fun"></form>
+    <div class="search-result"></div>
+  
+</div>
+
+  <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
+  <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
+  <div class="mdui-grid-tile">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <div class="mdui-grid-tile-actions">
+      <div class="mdui-grid-tile-text">
+        <div class="mdui-grid-tile-title">Ybaggio</div>
+        <div class="mdui-grid-tile-subtitle"><i class="mdui-icon material-icons">art_track</i></div>
+      </div>
+      
+        <div class="mdui-grid-tile-buttons">
+          <a href="mailto:ybaggio2010@outlook.com" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'ybaggio2010@outlook.com'}"><i class="mdui-icon material-icons">email</i></a>
+        </div>
+      
+    </div>
+  </div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    <a href="/" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
+      <div class="mdui-list-item-content">主页</div>
+    </a>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-0");if(a){document.getElementsByClassName("mdui-collapse-item")[0].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">archive</i>
+        <div class="mdui-list-item-content">归档</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2023/06/">六月 2023<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/04/">四月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/03/">三月 2023<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/01/">一月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/12/">十二月 2022<span class="mdui-ripple sidebar_archives-count">12</span></a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-1");if(a){document.getElementsByClassName("mdui-collapse-item")[1].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">class</i>
+        <div class="mdui-list-item-content">分类</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        
+        
+          <a href="javascript:;" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme mdui-ripple" style="justify-content: center;">分类为空</a>
+        
+      </div>
+    </div>
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-2");if(a){document.getElementsByClassName("mdui-collapse-item")[2].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-brown">bookmark</i>
+        <div class="mdui-list-item-content">标签</div>
+        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/zqn/" rel="tag">zqn<span class="mdui-ripple sidebar_archives-count">1</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解<span class="mdui-ripple sidebar_archives-count">14</span></a>
+        
+      </div>
+    </div>
+    <a href="/about" class="mdui-list-item mdui-ripple">
+      <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
+      <div class="mdui-list-item-content">关于</div>
+    </a>
+  </div>
+
+  <div class="mdui-divider"></div>
+
+  <div class="mdui-list" mdui-collapse="{accordion: true}">
+    
+    <div class="mdui-collapse-item">
+      <script>var a=localStorage.getItem("mdui-collapse-item-3");if(a){document.getElementsByClassName("mdui-collapse-item")[3].className+=" mdui-collapse-item-open"};</script>
+      <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+        <div class="mdui-list-item-content">友情链接</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">link</i>
+      </div>
+      <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
+        
+          <a href="https://koicy.ly" target="_blank" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme-accent mdui-ripple" style="justify-content: center;">RBtree</a>
+        
+          <a href="https://lighwhite.github.io" target="_blank" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme-accent mdui-ripple" style="justify-content: center;">Lightwhite</a>
+        
+          <a href="https://cnblogs.com/bykem" target="_blank" class="mdui-list-item mdui-p-l-2 mdui-text-color-theme-accent mdui-ripple" style="justify-content: center;">Bykem</a>
+        
+        
+      </div>
+    </div>
+  </div>
+</aside>
+
+  <main id="main" class="mdui-m-t-5 fadeIn animated">
+  
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  <style>#main article .mdui-card-content .center-block{display:block!important;margin-right:auto!important;margin-left:auto!important}</style>
+  <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
+  <article class="mdui-card mdui-m-b-5">
+    <header class="mdui-card-media">
+      <img src="/images/random/material-11.png" style="max-height: 240px;">
+      <div class="mdui-card-media-covered">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-title">CF1718B题解(很快的做法)!!!</div>
+          <div class="mdui-card-primary-subtitle"><i class="iconfont">&#xe697;</i> 2022-12-28 / <i class="iconfont">&#xe601;</i> Ybaggio</div>
+        </div>
+      </div>
+      <div class="mdui-card-menu">
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#qrcode', align: 'right'}"><i class="mdui-icon material-icons">devices</i></button>
+          <ul class="mdui-menu" id="qrcode">
+            
+              <li class="mdui-menu-item"><a class="mdui-text-center mdui-ripple">发送到手机</a></li>
+            
+            <li class="mdui-menu-item" disabled>
+              
+                <img src="//qr.liantu.com/api.php?w=246&m=10&text=http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/">
+              
+            </li>
+          </ul>
+        
+        
+          <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
+          <ul class="mdui-menu" id="share_menu">
+            <li class="mdui-menu-item">
+              <a href="https://service.weibo.com/share/share.php?appkey=&title=CF1718B题解(很快的做法)!!!&url=http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/&pic=http://ybaggio.fun/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://twitter.com/intent/tweet?text=CF1718B题解(很快的做法)!!!&url=http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/&via=Ybaggio" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://plus.google.com/share?url=http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/&title=CF1718B题解(很快的做法)!!!" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://connect.qq.com/widget/shareqq/index.html?site=Ybaggio的小站&title=CF1718B题解(很快的做法)!!!&pics=http://ybaggio.fun/images/favicon.png&url=http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+            </li>
+            <li class="mdui-menu-item">
+              <a href="https://telegram.me/share/url?url=http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/&text=CF1718B题解(很快的做法)!!!" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+            </li>
+          </ul>
+        
+      </div>
+    </header>
+    <div class="mdui-card-content mdui-typo">
+      <h2 id="题意">题意</h2>
+<p>现在我们有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 种字符，第 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 种字符有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 个，现在我们要将这 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\sum^n_{i=1}a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 个字符按照某种顺序排列，使其符合以下形式，就称它是合法的：</p>
+<p>1个相同的-1个相同的-2个相同的-3个相同的-5个相同的-8个相同的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>…</mo></mrow><annotation encoding="application/x-tex">\dots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.12em;vertical-align:0em;"></span><span class="minner">…</span></span></span></span></p>
+<p>很显然这是个菲波那切数列(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>−</mo><mn>1</mn><mo>−</mo><mn>2</mn><mo>−</mo><mn>3</mn><mo>−</mo><mn>5</mn><mo>−</mo><mn>8</mn><mo>−</mo><mo>…</mo></mrow><annotation encoding="application/x-tex">1-1-2-3-5-8- \dots</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.12em;vertical-align:0em;"></span><span class="minner">…</span></span></span></span> )</p>
+<p>例如： <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>b</mi><mi>a</mi><mi>a</mi><mi>b</mi><mi>b</mi><mi>b</mi><mi>c</mi><mi>c</mi><mi>c</mi><mi>c</mi><mi>c</mi><mi>a</mi><mi>a</mi><mi>a</mi><mi>a</mi><mi>a</mi><mi>a</mi><mi>a</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">abaabbbcccccaaaaaaaa</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span><span class="mord mathdefault">b</span><span class="mord mathdefault">b</span><span class="mord mathdefault">b</span><span class="mord mathdefault">c</span><span class="mord mathdefault">c</span><span class="mord mathdefault">c</span><span class="mord mathdefault">c</span><span class="mord mathdefault">c</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span><span class="mord mathdefault">a</span></span></span></span> 就是合法的，但是 $\verb aabbcccddddd $ 就是不合法的。现在给出你每种字符的数量，让你判断是否可以组成合法的串。</p>
+<h2 id="思路">思路</h2>
+<p>很容易看出一个串合法的话，它所有字符的数量肯定是斐波那契数列的前缀和  (1,2,4,7,12)，如果它所有字符的数量都不符合的话，这个串显然是不合法的。</p>
+<p>既然一个串的字符数量已经合法了的话，我们就开始考虑如何去分配了。</p>
+<p>先看样例的这一组:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">7 5</span><br></pre></td></tr></table></figure>
+<p>我们可以判断它的数量是合法的，接下来我们把 5 它和斐波那契数列对照起来看:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7 5</span><br><span class="line">1 1 2 3 5</span><br></pre></td></tr></table></figure>
+<p><strong>这时候我们有两种选择</strong>：</p>
+<ol>
+<li><strong>先</strong>用数量少的字符去放小的空</li>
+<li><strong>先</strong>用数量多的字符去放大的空</li>
+</ol>
+<p>如果我们选择第一种的话:数量为 5 的字符会放满 1,1,2 后留下 1,接下来就无法放了。</p>
+<p>如果我们选择第二种的话:数量为 7 的字符会放满 5 后留下 2，接下来因为 5 比 2 大所以用 5 放满 2,3 最后用 2 放满 1,1。</p>
+<p>可以发现第二种更优。</p>
+<h4 id="灵魂拷问：为什么">灵魂拷问：为什么???</h4>
+<p>因为斐波那契额数列是升序的，小的放小的后只会越来越小，这剩下的字符就只能放在小的空，但是小的空已经被用了很多了，所以就很难处理了；但是第二种方案虽然也会变得更小，但是小的空没有被填满，所以会更加优秀。</p>
+<hr>
+<p>明白了这个道理后我们就可以有一个贪心的做法了，每次选择 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 与 斐波那契额数组中的最大值进行比较，如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 的最大值比斐波那契中最大值的大的话，就讲 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 中的最大值减去斐波那契中的，将斐波那契中的最大值删掉（被填满了）。但如果 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 中的最大值小于斐波那契中的最大值，也就是说这个空没有字符能填，即这个串不合法。</p>
+<p>最后在找最大的时候可以用堆优化，具体看代码（有注释）：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ll long long</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> maxn=<span class="number">110</span>;</span><br><span class="line">ll t,n,a[maxn];</span><br><span class="line">map&lt;ll,ll&gt;mp;<span class="comment">//如果mp[x]==true的话就说明所有字符的和为x的串数量合法</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">E</span>&#123;</span><br><span class="line">    ll val,id;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span>==(<span class="type">const</span> E&amp;x)<span class="type">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id==x.id;</span><br><span class="line">    &#125;<span class="type">bool</span> <span class="keyword">operator</span>&lt;(<span class="type">const</span> E&amp;x)<span class="type">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> val&lt;x.val;</span><br><span class="line">    &#125;<span class="comment">//因为用了STL所以要重载运算符</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Heap</span>&#123;<span class="comment">//因为STL的堆不支持删除，所以就加了点料</span></span><br><span class="line">    priority_queue&lt;E&gt;q;</span><br><span class="line">    priority_queue&lt;E&gt;d;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(E x)</span></span>&#123;q.<span class="built_in">push</span>(x);&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">del</span><span class="params">(E x)</span></span>&#123;d.<span class="built_in">push</span>(x);&#125;</span><br><span class="line">    <span class="function">E <span class="title">top</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()&amp;&amp;!d.<span class="built_in">empty</span>()&amp;&amp;q.<span class="built_in">top</span>()==d.<span class="built_in">top</span>())&#123;q.<span class="built_in">pop</span>(),d.<span class="built_in">pop</span>();&#125;</span><br><span class="line">        <span class="keyword">if</span>(q.<span class="built_in">empty</span>())<span class="keyword">return</span> E&#123;<span class="number">-1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">        <span class="keyword">return</span> q.<span class="built_in">top</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(!q.<span class="built_in">empty</span>())q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">while</span>(!d.<span class="built_in">empty</span>())d.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">return</span>; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;heap,fib_heap;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(ll M)</span></span>&#123;<span class="comment">//初始化</span></span><br><span class="line">    heap.<span class="built_in">init</span>();fib_heap.<span class="built_in">init</span>();<span class="comment">//堆清空</span></span><br><span class="line">    mp[<span class="number">1</span>]=<span class="number">1</span>;fib_heap.<span class="built_in">push</span>(&#123;<span class="number">1</span>,<span class="number">1</span>&#125;);</span><br><span class="line">    ll fir=<span class="number">1</span>,sec=<span class="number">1</span>,cnt=<span class="number">1</span>,sum=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span>(sum&lt;=M)&#123;</span><br><span class="line">        fib_heap.<span class="built_in">push</span>(&#123;sec,++cnt&#125;);</span><br><span class="line">        ll tmp=sec;sec+=fir;</span><br><span class="line">        fir=tmp;mp[sum]=cnt;</span><br><span class="line">        sum+=sec;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">init</span>(<span class="number">1e11</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;t);</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;n);</span><br><span class="line">        ll sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">&quot;%lld&quot;</span>,&amp;a[i]),sum+=a[i];</span><br><span class="line">        <span class="keyword">if</span>(!mp[sum])&#123;<span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);<span class="keyword">continue</span>;&#125;<span class="comment">//数量不合法</span></span><br><span class="line">        <span class="built_in">init</span>(sum);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)heap.<span class="built_in">push</span>(E&#123;a[i],i&#125;);</span><br><span class="line">        <span class="type">int</span> last=<span class="number">0</span>;<span class="type">bool</span> flag=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">            E x=heap.<span class="built_in">top</span>(),y=fib_heap.<span class="built_in">top</span>(),tmp=E&#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">            <span class="keyword">if</span>(x.id==<span class="number">-1</span>&amp;&amp;y.id==<span class="number">-1</span>)<span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(x.id==last)&#123;heap.<span class="built_in">del</span>(x);tmp=x;x=heap.<span class="built_in">top</span>();&#125;<span class="comment">//不能两次选同一个字符</span></span><br><span class="line">            <span class="keyword">if</span>(x.val==y.val)heap.<span class="built_in">del</span>(x),fib_heap.<span class="built_in">del</span>(y),last=x.id;<span class="comment">//相等就相当于都删去</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(x.val&lt;y.val)&#123;flag=<span class="number">1</span>;<span class="keyword">break</span>;&#125;<span class="comment">//不合法</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(x.val&gt;y.val)fib_heap.<span class="built_in">del</span>(y),heap.<span class="built_in">del</span>(x),heap.<span class="built_in">push</span>(E&#123;x.val-y.val,x.id&#125;),last=x.id;</span><br><span class="line">            <span class="keyword">if</span>(tmp.id&gt;<span class="number">0</span>)heap.<span class="built_in">push</span>(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)<span class="built_in">printf</span>(<span class="string">&quot;NO\n&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;YES\n&quot;</span>);</span><br><span class="line">    &#125;<span class="comment">//</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+      <blockquote>
+        
+        <strong>本文链接：</strong><br><a href="http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/">http://ybaggio.fun/2022/12/28/cf1718b-ti-jie-hen-kuai-de-zuo-fa/</a>
+      </blockquote>
+    </div>
+    <footer class="mdui-card-actions">
+      
+      
+        <a class="mdui-ripple article_tags-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a>
+      
+    </footer>
+    
+  </article>
+  
+<script src="//cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+  <script>$("#main article .mdui-card-content img.fancybox").on("click",function(e){$.fancybox.open({src:$(this).attr("src")});});</script>
+
+
+  <nav id="paginator">
+    
+      <a rel="prev" class="extend prev" href="/2022/12/28/cf1100e-andrew-and-taxi-ti-jie/">
+        <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'CF1100E Andrew and Taxi 题解'}">上一篇</span>
+      </a>
+    
+    <div class="spacer"></div>
+    
+      <a rel="next" class="extend next" href="/2022/12/28/p6149-ti-jie-_-jian-dan-de-si-lu/">
+        <span class="mdui-p-x-3" mdui-tooltip="{content: 'P6149题解_简单的思路'}">下一篇</span>
+        <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
+      </a>
+    
+  </nav>
+
+
+
+
+
+</main>
+  <footer id="footer" class="mdui-m-t-5 mdui-p-y-3 mdui-color-theme">
+  <div class="mdui-p-y-0 mdui-text-center">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <div class="mdui-p-y-1 mdui-text-center">
+    Copyright &copy; 2023 - 2023 Ybaggio<br>
+    Powered by <a href="https://hexo.io/" target="_blank" class="mdui-text-color-theme-accent">Hexo</a>
+    
+  </div>
+</footer>
+
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
+  
+  
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
+
+  
+<script src="/custom.js"></script>
+
+</body>
+</html>
