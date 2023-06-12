@@ -10,12 +10,12 @@
   
   <title>P8270 [USACO22OPEN] Subset Equality S题解 | Ybaggio的小站</title>
 
-  <link rel="shortcut icon" href="/blog/images/favicon.png">
-  <link rel="alternate" href="/blog/atom.xml" title="Ybaggio的小站" type="application/atom+xml">
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="alternate" href="/atom.xml" title="Ybaggio的小站" type="application/atom+xml">
   <meta name="description" content="题意 首先，给我们两个字符串，分别为 S,TS,TS,T ( SSS 和 TTT 的长度均小于 10510^5105  )， 这两个字符串只包含 a-r 这些字符。然后给我们 Q(Q≤105)Q (Q \leq 10^5)Q(Q≤105) 个查询，每个查询输入一个字符串，比如输入了 abc 这个查询，我们应该判断 SSS 和 TTT 中的 a,b,c 都提取出来，看是否相同。  思路 我们第一眼看">
 <meta property="og:type" content="article">
 <meta property="og:title" content="P8270 [USACO22OPEN] Subset Equality S题解">
-<meta property="og:url" content="http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/index.html">
+<meta property="og:url" content="http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/index.html">
 <meta property="og:site_name" content="Ybaggio的小站">
 <meta property="og:description" content="题意 首先，给我们两个字符串，分别为 S,TS,TS,T ( SSS 和 TTT 的长度均小于 10510^5105  )， 这两个字符串只包含 a-r 这些字符。然后给我们 Q(Q≤105)Q (Q \leq 10^5)Q(Q≤105) 个查询，每个查询输入一个字符串，比如输入了 abc 这个查询，我们应该判断 SSS 和 TTT 中的 a,b,c 都提取出来，看是否相同。  思路 我们第一眼看">
 <meta property="og:locale" content="zh_CN">
@@ -31,30 +31,30 @@
 
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Ybaggio的小站">
-  <meta name="msapplication-starturl" content="http://ybaggio.fun/blog/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/">
+  <meta name="msapplication-starturl" content="http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/">
   <meta name="msapplication-navbutton-color" content="#9C27B0">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Ybaggio的小站">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="apple-touch-icon" href="/blog/images/favicon.png">
+  <link rel="apple-touch-icon" href="/images/favicon.png">
 
   
-    <link rel="canonical" href="http://ybaggio.fun/blog/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/">
-  
-
-  
+    <link rel="canonical" href="http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/">
   
 
   
   
+
+  
+  
   
 
   
-<link rel="stylesheet" href="/blog/css/mdui.css">
-<link rel="stylesheet" href="/blog/css/style.css">
+<link rel="stylesheet" href="/css/mdui.css">
+<link rel="stylesheet" href="/css/style.css">
 
   
-<link rel="stylesheet" href="/blog/custom.css">
+<link rel="stylesheet" href="/custom.css">
 
 <meta name="generator" content="Hexo 6.3.0"><link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
 
@@ -65,15 +65,15 @@
   <header id="header" class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide mdui-appbar-inset">
   <div class="mdui-toolbar mdui-color-theme">
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="mdui-icon material-icons">menu</i></a>
-    <a href="/blog/" class="mdui-typo-headline">Ybaggio的小站</a>
+    <a href="/" class="mdui-typo-headline">Ybaggio的小站</a>
     <div class="mdui-toolbar-spacer"></div>
     <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: '搜索'}"><i class="mdui-icon material-icons">search</i></a>
-    <a href="/blog/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
+    <a href="/atom.xml" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: 'RSS'}"><i class="mdui-icon material-icons">rss_feed</i></a>
   </div>
 </header>
 <div class="mdui-dialog" id="search">
   
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="http://ybaggio.fun/blog"></form>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="请输入关键字"><input type="hidden" name="sitesearch" value="http://ybaggio.fun"></form>
     <div class="search-result"></div>
   
 </div>
@@ -81,8 +81,8 @@
   <aside id="sidebar" class="mdui-drawer mdui-drawer-full-height">
   <script>var a=localStorage.getItem("mdui-drawer-close");if(a){document.getElementById("sidebar").className+=" mdui-drawer-close"};</script>
   <div class="mdui-grid-tile">
-    <img src="/blog/images/banner.png" style="height: 160px;">
-    <img src="/blog/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
+    <img src="/images/banner.png" style="height: 160px;">
+    <img src="/images/avatar.png" class="avatar-animation" style="position: absolute; top: 10%; left: 24px; width: 64px; height: 64px; border: 2px solid #fff; border-radius: 50%;">
     <div class="mdui-grid-tile-actions">
       <div class="mdui-grid-tile-text">
         <div class="mdui-grid-tile-title">Ybaggio</div>
@@ -97,7 +97,7 @@
   </div>
 
   <div class="mdui-list" mdui-collapse="{accordion: true}">
-    <a href="/blog/" class="mdui-list-item mdui-ripple">
+    <a href="/" class="mdui-list-item mdui-ripple">
       <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">home</i>
       <div class="mdui-list-item-content">主页</div>
     </a>
@@ -110,7 +110,7 @@
       </div>
       <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-        <a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2023/04/">四月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2023/03/">三月 2023<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2023/02/">二月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2023/01/">一月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/archives/2022/12/">十二月 2022<span class="mdui-ripple sidebar_archives-count">12</span></a>
+        <a class="mdui-ripple sidebar_archives-link" href="/archives/2023/04/">四月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/03/">三月 2023<span class="mdui-ripple sidebar_archives-count">4</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/02/">二月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2023/01/">一月 2023<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/archives/2022/12/">十二月 2022<span class="mdui-ripple sidebar_archives-count">12</span></a>
         
       </div>
     </div>
@@ -138,11 +138,11 @@
       </div>
       <div class="mdui-collapse-item-body mdui-list mdui-list-dense">
         
-        <a class="mdui-ripple sidebar_archives-link" href="/blog/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/blog/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解<span class="mdui-ripple sidebar_archives-count">14</span></a>
+        <a class="mdui-ripple sidebar_archives-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记<span class="mdui-ripple sidebar_archives-count">2</span></a><a class="mdui-ripple sidebar_archives-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解<span class="mdui-ripple sidebar_archives-count">14</span></a>
         
       </div>
     </div>
-    <a href="/blog/about" class="mdui-list-item mdui-ripple">
+    <a href="/about" class="mdui-list-item mdui-ripple">
       <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-purple">person</i>
       <div class="mdui-list-item-content">关于</div>
     </a>
@@ -180,7 +180,7 @@
   <style>#main article .mdui-card-content .text-center{text-align:center!important}</style>
   <article class="mdui-card mdui-m-b-5">
     <header class="mdui-card-media">
-      <img src="/images/random/material-16.png" style="max-height: 240px;">
+      <img src="/images/random/material-18.png" style="max-height: 240px;">
       <div class="mdui-card-media-covered">
         <div class="mdui-card-primary">
           <div class="mdui-card-primary-title">P8270 [USACO22OPEN] Subset Equality S题解</div>
@@ -196,7 +196,7 @@
             
             <li class="mdui-menu-item" disabled>
               
-                <img src="//qr.liantu.com/api.php?w=246&m=10&text=http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/">
+                <img src="//qr.liantu.com/api.php?w=246&m=10&text=http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/">
               
             </li>
           </ul>
@@ -205,25 +205,25 @@
           <button class="mdui-btn mdui-btn-icon mdui-text-color-white" mdui-menu="{target: '#share_menu', align: 'right'}"><i class="mdui-icon material-icons">share</i></button>
           <ul class="mdui-menu" id="share_menu">
             <li class="mdui-menu-item">
-              <a href="https://service.weibo.com/share/share.php?appkey=&title=P8270 [USACO22OPEN] Subset Equality S题解&url=http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/&pic=http://ybaggio.fun/blog/blog/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
+              <a href="https://service.weibo.com/share/share.php?appkey=&title=P8270 [USACO22OPEN] Subset Equality S题解&url=http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/&pic=http://ybaggio.fun/images/favicon.png&searchPic=false&style=simple" target="_blank" class="mdui-ripple">分享到 Weibo</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://twitter.com/intent/tweet?text=P8270 [USACO22OPEN] Subset Equality S题解&url=http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/&via=Ybaggio" target="_blank" class="mdui-ripple">分享到 Twitter</a>
+              <a href="https://twitter.com/intent/tweet?text=P8270 [USACO22OPEN] Subset Equality S题解&url=http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/&via=Ybaggio" target="_blank" class="mdui-ripple">分享到 Twitter</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.facebook.com/sharer/sharer.php?u=http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/" target="_blank" class="mdui-ripple">分享到 Facebook</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://plus.google.com/share?url=http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/" target="_blank" class="mdui-ripple">分享到 Google+</a>
+              <a href="https://plus.google.com/share?url=http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/" target="_blank" class="mdui-ripple">分享到 Google+</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/&title=P8270 [USACO22OPEN] Subset Equality S题解" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/&title=P8270 [USACO22OPEN] Subset Equality S题解" target="_blank" class="mdui-ripple">分享到 LinkedIn</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://connect.qq.com/widget/shareqq/index.html?site=Ybaggio的小站&title=P8270 [USACO22OPEN] Subset Equality S题解&pics=http://ybaggio.fun/blog/blog/images/favicon.png&url=http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/" target="_blank" class="mdui-ripple">分享到 QQ</a>
+              <a href="https://connect.qq.com/widget/shareqq/index.html?site=Ybaggio的小站&title=P8270 [USACO22OPEN] Subset Equality S题解&pics=http://ybaggio.fun/images/favicon.png&url=http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/" target="_blank" class="mdui-ripple">分享到 QQ</a>
             </li>
             <li class="mdui-menu-item">
-              <a href="https://telegram.me/share/url?url=http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/&text=P8270 [USACO22OPEN] Subset Equality S题解" target="_blank" class="mdui-ripple">分享到 Telegram</a>
+              <a href="https://telegram.me/share/url?url=http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/&text=P8270 [USACO22OPEN] Subset Equality S题解" target="_blank" class="mdui-ripple">分享到 Telegram</a>
             </li>
           </ul>
         
@@ -257,13 +257,13 @@
       
       <blockquote>
         
-        <strong>本文链接：</strong><br><a href="http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/">http://ybaggio.fun/blog/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/</a>
+        <strong>本文链接：</strong><br><a href="http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/">http://ybaggio.fun/2022/12/28/p8270-usaco22open-subset-equality-s-ti-jie/</a>
       </blockquote>
     </div>
     <footer class="mdui-card-actions">
       
       
-        <a class="mdui-ripple article_tags-link" href="/blog/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a>
+        <a class="mdui-ripple article_tags-link" href="/tags/%E9%A2%98%E8%A7%A3/" rel="tag">题解</a>
       
     </footer>
     
@@ -277,14 +277,14 @@
 
   <nav id="paginator">
     
-      <a rel="prev" class="extend prev" href="/blog/2022/12/28/p8269-usaco22open-visits-s-ti-jie/">
+      <a rel="prev" class="extend prev" href="/2022/12/28/p8269-usaco22open-visits-s-ti-jie/">
         <button aria-label="prev" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_back</i></button>
         <span class="mdui-p-x-3" mdui-tooltip="{content: 'P8269 [USACO22OPEN] Visits S 题解'}">上一篇</span>
       </a>
     
     <div class="spacer"></div>
     
-      <a rel="next" class="extend next" href="/blog/2022/12/28/p3670-usaco17openbovine-genomics-s-ti-jie/">
+      <a rel="next" class="extend next" href="/2022/12/28/p3670-usaco17openbovine-genomics-s-ti-jie/">
         <span class="mdui-p-x-3" mdui-tooltip="{content: 'P3670 [USACO17OPEN]Bovine Genomics S题解'}">下一篇</span>
         <button aria-label="next" class="mdui-btn mdui-btn-raised mdui-btn-icon mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_forward</i></button>
       </a>
@@ -327,11 +327,11 @@
   <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-color-theme-accent mdui-ripple"><i class="mdui-icon material-icons">arrow_upward</i></button>
   
   
-<script src="/blog/js/mdui.js"></script>
-<script src="/blog/js/script.js"></script>
+<script src="/js/mdui.js"></script>
+<script src="/js/script.js"></script>
 
   
-<script src="/blog/custom.js"></script>
+<script src="/custom.js"></script>
 
 </body>
 </html>
